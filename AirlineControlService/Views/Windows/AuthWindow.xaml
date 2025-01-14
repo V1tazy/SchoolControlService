@@ -16,11 +16,11 @@
             <TextBlock FontSize="24">Авторизация</TextBlock>
             <StackPanel>
                 <TextBlock>Логин</TextBlock>
-                <TextBox></TextBox>
+                <TextBox Text="{Binding Login, UpdateSourceTrigger=PropertyChanged}"></TextBox>
                 <TextBlock>Пароль</TextBlock>
-                <TextBox></TextBox>
+                <TextBox Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}"></TextBox>
 
-                <Button Margin="0 10 0 0" Padding="0 0 10 0" Command=">Войти</Button>
+                <Button Margin="0 10 0 0" Padding="0 0 10 0" Command="{Binding AuthCommand}">Войти</Button>
             </StackPanel>
         </StackPanel>
     </Grid>

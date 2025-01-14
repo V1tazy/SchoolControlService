@@ -1,14 +1,15 @@
-﻿using System;
+﻿using AirlineControlService.Models.Interface;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AirlineControlService.Models
+namespace AirlineControlService.Models.ChildrenJournal
 {
-    internal class Shedules
+    internal class Shedules: IEntity
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
 
         public User Teacher { get; set; }
 
