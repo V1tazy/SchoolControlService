@@ -6,11 +6,9 @@
         xmlns:local="clr-namespace:AirlineControlService.Views.Windows"
         xmlns:Vm="clr-namespace:AirlineControlService.ViewModels"
         mc:Ignorable="d"
-        Title="Детский Электронный журнал" Height="450" Width="800">
-
-    <Window.DataContext>
-        <Vm:AuthViewModel/>
-    </Window.DataContext>
+        Title="{Binding Login}" Height="450" Width="800"
+        DataContext="{Binding Path=AuthViewModel, Source={StaticResource Locator}}">
+    
     <Grid>
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
             <TextBlock FontSize="24">Авторизация</TextBlock>

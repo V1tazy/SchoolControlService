@@ -18,7 +18,7 @@ namespace AirlineControlService.ViewModels
     {
         #region defineValues
 
-        private string _login;
+        private string _login = "asdasd";
         public string Login {
             get => _login; 
             set => Set(ref _login, value);
@@ -39,9 +39,7 @@ namespace AirlineControlService.ViewModels
 
         private void OnAuthCommandExecute(object p)
         {
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
-            Application.Current.MainWindow.Close();
+            MessageBox.Show("adsasd");
         }
 
         private bool CanAuthCommandExecute(object p)

@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using AirlineControlService.Services;
+using AirlineControlService.ViewModels;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Windows;
 
@@ -12,10 +14,10 @@ namespace AirlineControlService
 
         public static IServiceProvider Services => _Host.Services;
 
-        internal static void ConfigureService(HostBuilderContext host, IServiceCollection services)
-        {
-
-        }
+        internal static void ConfigureService(HostBuilderContext host, IServiceCollection services) => services
+            .AddServices()
+            .AddViewModels()
+            ;
 
         protected override async void OnStartup(StartupEventArgs e)
         {

@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 
 namespace AirlineControlService.ViewModels
 {
-    class ViewModelLocator
+    static class ViewModelRegistrator
     {
-        public AuthViewModel AuthViewModel => App.Services.GetRequiredService<AuthViewModel>();
+        public static IServiceCollection AddViewModels(this IServiceCollection services) => services
+            .AddSingleton<AuthViewModel>()
+        ;
     }
 }
