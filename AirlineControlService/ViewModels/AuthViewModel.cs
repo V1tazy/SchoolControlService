@@ -18,7 +18,7 @@ namespace AirlineControlService.ViewModels
     {
         #region defineValues
 
-        private string _login = "asdasd";
+        private string _login;
         public string Login {
             get => _login; 
             set => Set(ref _login, value);
