@@ -1,12 +1,8 @@
 ﻿using AirlineControlService.DAL.Entityes.Base;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AirlineControlService.DAL.Entityes
 {
+    // Промежуточная таблица для связи "многие-ко-многим" между родителями и детьми
     public class ParentChild : Entity
     {
         public User Parent { get; set; }
@@ -15,4 +11,5 @@ namespace AirlineControlService.DAL.Entityes
         public Child Child { get; set; }
         public int ChildId { get; set; }
     }
+
 }
