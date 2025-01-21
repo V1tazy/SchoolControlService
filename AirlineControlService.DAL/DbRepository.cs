@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AirlineControlService.Models.Interface
+namespace AirlineControlService.DAL
 {
-    internal interface IEntity
+    internal class DbRepository<T>
     {
-        public int Id { get; set; }
     }
 }
