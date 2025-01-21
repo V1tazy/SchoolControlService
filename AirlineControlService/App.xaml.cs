@@ -1,4 +1,5 @@
-﻿using AirlineControlService.Services;
+﻿using AirlineControlService.Data;
+using AirlineControlService.Services;
 using AirlineControlService.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -15,6 +16,7 @@ namespace AirlineControlService
         public static IServiceProvider Services => _Host.Services;
 
         internal static void ConfigureService(HostBuilderContext host, IServiceCollection services) => services
+            .AddDatabase(host.Configuration.GetSection("Database"))
             .AddServices()
             .AddViewModels()
             ;
