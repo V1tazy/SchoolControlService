@@ -27,6 +27,7 @@ namespace AirlineControlService.Data
                         opt.UseInMemoryDatabase("Airline.db");
                         break;
                 }
-            });
+            })
+            .AddTransient<DbInitializer>();
     }
 }

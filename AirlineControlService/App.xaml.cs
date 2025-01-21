@@ -1,4 +1,5 @@
-﻿using AirlineControlService.Data;
+﻿using AirlineControlService.DAL.Context;
+using AirlineControlService.Data;
 using AirlineControlService.Services;
 using AirlineControlService.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
@@ -24,6 +25,10 @@ namespace AirlineControlService
         protected override async void OnStartup(StartupEventArgs e)
         {
             var host = Host;
+
+            using(var scope = Services.CreateScope())
+                scope.ServiceProvider.GetRequiredService<DbInitializer>().InitializeAsync().Wait();
+
             base.OnStartup(e);
             await host.StartAsync();
         }
