@@ -27,7 +27,7 @@ namespace AirlineControlService
             var host = Host;
 
             using(var scope = Services.CreateScope())
-                scope.ServiceProvider.GetRequiredService<DbInitializer>().InitializeAsync().Wait();
+                scope.ServiceProvider.GetRequiredService<DbInitializer>().InitializeAsync();
 
             base.OnStartup(e);
             await host.StartAsync();

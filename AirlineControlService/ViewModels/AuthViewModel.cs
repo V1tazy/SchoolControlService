@@ -1,6 +1,5 @@
 ﻿using AirlineControlService.Infrastructure.Commands;
 using AirlineControlService.Models;
-using AirlineControlService.Models.ChildrenJournal;
 using AirlineControlService.VIewModels.Base;
 using AirlineControlService.Views.Windows;
 using Microsoft.EntityFrameworkCore;
