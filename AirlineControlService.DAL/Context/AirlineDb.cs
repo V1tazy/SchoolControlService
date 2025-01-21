@@ -5,7 +5,6 @@ namespace AirlineControlService.DAL.Context
 {
     public class AirlineDb : DbContext
     {
-        // DbSet для всех сущностей
         public DbSet<User> Users { get; set; }
         public DbSet<Child> Children { get; set; }
         public DbSet<ParentChild> ParentChildren { get; set; }

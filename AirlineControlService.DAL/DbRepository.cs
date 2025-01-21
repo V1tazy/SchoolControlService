@@ -1,4 +1,5 @@
 ﻿using AirlineControlService.DAL.Entityes.Base;
+using AirlineControlService.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AirlineControlService.DAL
 {
-    internal class DbRepository<T>: IRepository<T> where T : Entity, new()
+    public class DbRepository<T>: IRepository<T> where T : Entity, new()
     {
     }
 }
