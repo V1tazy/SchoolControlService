@@ -11,16 +11,15 @@ namespace AirlineControlService.Interfaces
         IQueryable<T> items { get; }
 
         T Get(int id);
-        Task<T> GetAsync(int id);
+        Task<T> GetAsync(int id, CancellationToken Cancel);
 
         T Add(T item);
+        Task<T> AddAsync(T item, CancellationToken Cancel);
 
-        Task<T> AddAsync(T item);
+        void Update(T item);
+        Task UpdateAsync(T item, CancellationToken Cancel);
 
-        T Update(T item);
-        Task<T> UpdateAsync(T item);
-
-        T Remove(int id);
-        Task<T> RemoveAsync(int id);
+        void Remove(int id);
+        Task RemoveAsync(int id, CancellationToken Cancel);
     }
 }
