@@ -29,5 +29,6 @@ namespace AirlineControlService.Data
                 }
             })
             .AddTransient<DbInitializer>();
+            //.AddRepositoryInDB;
     }
 }
