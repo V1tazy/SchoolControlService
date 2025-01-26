@@ -2,6 +2,7 @@
 using AirlineControlService.DAL.Entityes;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using System.Diagnostics;
 
 namespace AirlineControlService.Data
 {
@@ -18,15 +19,23 @@ namespace AirlineControlService.Data
 
         public async Task InitializeAsync()
         {
+            var timer = Stopwatch.StartNew();
+            _logger.LogInformation("Инициализация БД");
+
             if (await _db.Users.AnyAsync()) return;
 
+            _logger.LogInformation("Миграция БД");
             await _db.Database.MigrateAsync().ConfigureAwait(false);
+            _logger.LogInformation("Миграция выполнена за {0} мс", timer.ElapsedMilliseconds);
+
 
             await InitializeUsers();
             await InitializeChildren();
             await InitializeClasses();
             await InitializeSchedules();
             await InitializeAttendances();
+
+            _logger.LogInformation("Инициализация БД выполнена за {0} мс", timer.ElapsedMilliseconds);
         }
 
 
