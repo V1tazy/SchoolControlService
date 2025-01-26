@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using AirlineControlService.BLL.Services;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,7 @@ namespace AirlineControlService.Services
     static class ServiceRegistrator
     {
         public static IServiceCollection AddServices(this IServiceCollection services) => services
-        ;
+            .AddTransient<IEnrolmentService, EnrolmentService>()
+            .AddTransient<IScheduleService, ScheduleService>();
     }
 }
