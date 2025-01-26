@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace AirlineControlService.DAL
 {
-    internal class DbRepository<T> : IRepository<T> where T : Entity, new()
+    class DbRepository<T> : IRepository<T> where T : Entity, new()
     {
         private readonly AirlineDb _db;
         private readonly DbSet<T> _Set;

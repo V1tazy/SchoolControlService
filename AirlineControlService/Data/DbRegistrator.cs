@@ -1,4 +1,5 @@
-﻿using AirlineControlService.DAL.Context;
+﻿using AirlineControlService.DAL;
+using AirlineControlService.DAL.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -28,7 +29,7 @@ namespace AirlineControlService.Data
                         break;
                 }
             })
-            .AddTransient<DbInitializer>();
-            //.AddRepositoryInDB;
+            .AddTransient<DbInitializer>()
+            .AddRepositoryesInDB();
     }
 }

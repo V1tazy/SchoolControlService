@@ -1,12 +1,7 @@
-﻿using AirlineControlService.Infrastructure.Commands;
+﻿using AirlineControlService.DAL.Entityes;
+using AirlineControlService.Infrastructure.Commands;
+using AirlineControlService.Interfaces;
 using AirlineControlService.VIewModels.Base;
-using AirlineControlService.Views.Windows;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
@@ -14,6 +9,8 @@ namespace AirlineControlService.ViewModels
 {
     internal class AuthViewModel: ViewModel
     {
+
+        private readonly IRepository<User> _userRepository;
         #region defineValues
 
         private string _login;
@@ -49,10 +46,11 @@ namespace AirlineControlService.ViewModels
         #endregion
 
         #region Constructor
-        public AuthViewModel() 
+        public AuthViewModel()
         {
             AuthCommand = new LambdaCommand(OnAuthCommandExecute, CanAuthCommandExecute);
         }
+
         #endregion
     }
 }

@@ -9,9 +9,11 @@ using System.Threading.Tasks;
 
 namespace AirlineControlService.DAL.Repository
 {
-    class UsersRepository: DbRepository<User>
+    class ClassChildrensRepository: DbRepository<ClassChild>
     {
-
-        public UsersRepository(AirlineDb db): base(db) { }
+        public override IQueryable<ClassChild> items => base.items
+            .Include(c => c.Class)
+            .Include(c => c.Child);
+        public ClassChildrensRepository(AirlineDb db) : base(db) { }
     }
 }
