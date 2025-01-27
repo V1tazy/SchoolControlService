@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AirlineControlService.ViewModels
 {
-    internal class AchivementPage: ViewModel
+    internal class AchivementPageViewModel: ViewModel
     {
     }
 }
