@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using AirlineControlService.ViewModels.AdminViewModels;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,8 +15,14 @@ namespace AirlineControlService.ViewModels
             .AddSingleton<MainWindowViewModel>()
             .AddSingleton<ClassesViewModel>()
             .AddSingleton<PersonalAccountViewModel>()
-            .AddSingleton<AdminViewModel>()
             .AddSingleton<AchivementPageViewModel>()
+
+
+            //Реализация admin vm-представлений
+            .AddSingleton<AdminViewModel>()
+            .AddSingleton<AdminUserViewModel>()
+            .AddSingleton<AdminSchedulesViewModel>()
+            .AddSingleton<AdminChildsViewModel>()
         ;
     }
 }
