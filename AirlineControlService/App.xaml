@@ -6,6 +6,9 @@
              StartupUri="Views/Windows/AuthWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles/Main.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
             <vm:ViewModelLocator x:Key="Locator"/>
         </ResourceDictionary>
     </Application.Resources>

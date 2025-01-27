@@ -6,7 +6,17 @@
         xmlns:local="clr-namespace:AirlineControlService.Views.Windows"
         mc:Ignorable="d"
         Title="AdminWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+    <DockPanel>
+        <Menu IsMainMenu="True">
+            <MenuItem Header="Пользователи"/>
+            <MenuItem Header="Расписание"/>
+            <MenuItem Header="Дети"/>
+        </Menu>
+
+        <StatusBar>
+            <StatusBarItem>Готово</StatusBarItem>
+        </StatusBar>
+
+        <Grid/>
+    </DockPanel>
 </Window>
