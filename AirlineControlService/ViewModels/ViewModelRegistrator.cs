@@ -12,17 +12,6 @@ namespace AirlineControlService.ViewModels
     {
         public static IServiceCollection AddViewModels(this IServiceCollection services) => services
             .AddSingleton<AuthViewModel>()
-            .AddSingleton<MainWindowViewModel>()
-            .AddSingleton<ClassesViewModel>()
-            .AddSingleton<PersonalAccountViewModel>()
-            .AddSingleton<AchivementPageViewModel>()
-
-
-            //Реализация admin vm-представлений
-            .AddSingleton<AdminViewModel>()
-            .AddSingleton<AdminUserViewModel>()
-            .AddSingleton<AdminSchedulesViewModel>()
-            .AddSingleton<AdminChildsViewModel>()
         ;
     }
 }

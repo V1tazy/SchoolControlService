@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace AirlineControlService.ViewModels
@@ -17,19 +18,19 @@ namespace AirlineControlService.ViewModels
         public ICommand ChildSelectCommand { get; }
         public ICommand UserSelectCommand { get; }
 
-        private async void OnScheduleSelectCommand(object p) 
+        private void OnScheduleSelectCommand(object p) 
         {
-
+            MessageBox.Show("Расписание");
         }
 
-        private async void OnChildSelectCommand(object p) 
+        private void OnChildSelectCommand(object p) 
         {
-            
+            MessageBox.Show("Дети");
         }
 
-        private async void OnUserSelectCommand(object p) 
+        private void OnUserSelectCommand(object p) 
         {
-
+            MessageBox.Show("Пользователи");
         }
 
         #endregion

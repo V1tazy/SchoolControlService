@@ -1,0 +1,8 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:vm ="clr-namespace:AirlineControlService.ViewModels"
+                    xmlns:view="clr-namespace:AirlineControlService.Views.Windows">
+    <DataTemplate DataType="{x:Type vm:AdminViewModel}">
+        <view:AdminWindow DataContext="{Binding}"></view:AdminWindow>
+    </DataTemplate>
+</ResourceDictionary>

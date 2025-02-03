@@ -4,19 +4,31 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AirlineControlService.Views.Windows"
+        xmlns:vm ="clr-namespace:AirlineControlService.ViewModels"
         mc:Ignorable="d"
         Title="AdminWindow" Height="450" Width="800">
+
+    <Window.Resources>
+        <vm:AdminViewModel x:Key="AdminVM"/>
+    </Window.Resources>
+
+    <Window.DataContext>
+        <vm:AdminViewModel/>
+    </Window.DataContext>
+
     <DockPanel>
         <Menu IsMainMenu="True">
-            <MenuItem Header="Пользователи"/>
-            <MenuItem Header="Расписание"/>
-            <MenuItem Header="Дети"/>
+            <MenuItem Header="Пользователи" Command="{Binding UserSelectCommand}"/>
+            <MenuItem Header="Расписание" Command="{Binding ScheduleSelectCommand}"/>
+            <MenuItem Header="Дети" Command="{Binding ChildSelectCommand}"/>
         </Menu>
 
         <StatusBar>
             <StatusBarItem>Готово</StatusBarItem>
         </StatusBar>
 
-        <Grid/>
+        <Grid>
+            <ContentControl Content="{Binding CurrentModel}"/>
+        </Grid>
     </DockPanel>
 </Window>

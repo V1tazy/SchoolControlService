@@ -23,7 +23,7 @@ namespace AirlineControlService.Services.AdminServices
         {
             if (item == _Childs.items.FirstOrDefault())
             {
-
+                return null;
             }
 
             else

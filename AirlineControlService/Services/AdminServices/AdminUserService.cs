@@ -1,4 +1,6 @@
-﻿using AirlineControlService.Services.Interface.Admin;
+﻿using AirlineControlService.DAL.Entityes;
+using AirlineControlService.Interfaces;
+using AirlineControlService.Services.Interface.Admin;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +9,21 @@ using System.Threading.Tasks;
 
 namespace AirlineControlService.Services.AdminServices
 {
-    internal class AdminUserService: IAdminService
+    internal class AdminUserService : IAdminService
     {
+        public Task<Child> Add(IEntity item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task Remove(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Child> Update(IEntity item)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
