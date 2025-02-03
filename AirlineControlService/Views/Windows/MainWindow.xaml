@@ -8,17 +8,20 @@
         mc:Ignorable="d"
         DataContext="{Binding Path=MainWindowViewModel, Source={StaticResource Locator}}"
         Title="{Binding Title}" Height="450" Width="800">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="40"/>
-            <RowDefinition Height="auto"/>
-        </Grid.RowDefinitions>
-        <Grid Grid.Column="1">
-            <TextBlock Text="{Binding Username}" HorizontalAlignment="Right"></TextBlock>
+
+    <DockPanel>
+        <Menu IsMainMenu="True" >
+            <MenuItem Header="Достижения" Command="{Binding AchiveSelectCommand}"/>
+            <MenuItem Header="Расписание" Command="{Binding ScheduleSelectCommand}"/>
+            <MenuItem Header="Дети" Command="{Binding ChildSelectCommand}"/>
+        </Menu>
+
+        <StatusBar>
+            <StatusBarItem>Готово</StatusBarItem>
+        </StatusBar>
+
+        <Grid>
+            <ContentControl Content="{Binding CurrentViewModel}"/>
         </Grid>
-    </Grid>
+    </DockPanel>
 </Window>

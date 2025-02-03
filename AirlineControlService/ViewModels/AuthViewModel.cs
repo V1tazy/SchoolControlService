@@ -13,6 +13,11 @@ namespace AirlineControlService.ViewModels
 {
     internal class AuthViewModel : ViewModel
     {
+        private readonly IRepository<Schedule> _Schedule;
+        private readonly IRepository<User> _User;
+        private readonly IRepository<Child> _Child;
+
+
         private readonly IAuthService _authService;
 
         #region defineValues
@@ -43,21 +48,38 @@ namespace AirlineControlService.ViewModels
             if (user != null)
             {
                 Window window;
-                if(user.Role.ToLower() == "admin")
-                    window = new AdminWindow();
-                else
-                    window = new MainWindow();
 
-                MessageBox.Show($"Добро пожаловать, {user.FirstName}!");
-                App.Current.MainWindow.Close();
-                window.Show();
+                if (user.Role.ToLower() == "admin")
+                {
+                    window = new AdminWindow
+                    {
+                        DataContext = new AdminViewModel(_Schedule, _User, _Child)
+                    };
+                }
+                else
+                {
+                    window = new MainWindow
+                    {
+                        DataContext = new MainWindowViewModel(_Child, _Schedule, _User, user)
+                    };
+                }
+
+                window.Show(); // Открываем новое окно
+
+                // Закрываем текущее окно
+                if (App.Current.MainWindow != null)
+                {
+                    App.Current.MainWindow.Close();
+                }
+                App.Current.MainWindow = window; // Назначаем новое главное окно
             }
             else
             {
-                // Неверные логин или пароль
                 MessageBox.Show("Неверный логин или пароль.");
             }
         }
+
+
 
         private bool CanAuthCommandExecute(object p)
         {
@@ -66,8 +88,13 @@ namespace AirlineControlService.ViewModels
         #endregion
 
         #region Constructor
-        public AuthViewModel(IAuthService authService)
+        public AuthViewModel(IAuthService authService, IRepository<Schedule> Schedule, IRepository<User> Users, IRepository<Child> Childs)
         {
+            _Schedule = Schedule;
+            _User = Users;
+            _Child = Childs;
+
+
             _authService = authService;
             AuthCommand = new LambdaCommand(OnAuthCommandExecute, CanAuthCommandExecute);
         }

@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AirlineControlService.Views.Custom
+namespace AirlineControlService.Views.Custom.Admin
 {
     /// <summary>
-    /// Логика взаимодействия для AdminChildPage.xaml
+    /// Логика взаимодействия для AdminChildsPage.xaml
     /// </summary>
-    public partial class AdminChildPage : UserControl
+    public partial class AdminChildsPage : UserControl
     {
-        public AdminChildPage()
+        public AdminChildsPage()
         {
             InitializeComponent();
         }

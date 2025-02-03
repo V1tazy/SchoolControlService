@@ -41,17 +41,17 @@ namespace AirlineControlService.ViewModels.AdminViewModels
         #endregion
         #region Command.Functional
 
-        private void OnAddUserCommand(object p)
+        private void OnAddCommand(object p)
         {
 
         }
 
-        private void OnEditUserCommand(object p)
+        private void OnEditCommand(object p)
         {
 
         }
 
-        private void OnRemoveUserCommand(object p)
+        private void OnRemoveCommand(object p)
         {
 
         }

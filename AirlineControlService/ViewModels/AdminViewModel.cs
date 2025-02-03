@@ -1,4 +1,7 @@
-﻿using AirlineControlService.Infrastructure.Commands;
+﻿using AirlineControlService.DAL.Entityes;
+using AirlineControlService.Infrastructure.Commands;
+using AirlineControlService.Interfaces;
+using AirlineControlService.ViewModels.AdminViewModels;
 using AirlineControlService.VIewModels.Base;
 using System;
 using System.Collections.Generic;
@@ -14,31 +17,50 @@ namespace AirlineControlService.ViewModels
     {
         #region Command
 
+
+        private readonly IRepository<Schedule> _Schedule;
+        private readonly IRepository<User> _User;
+        private readonly IRepository<Child> _Child;
+
+        private ViewModel _CurrentModel;
+
+        public ViewModel CurrentModel
+        {
+            get => _CurrentModel;
+            set => Set(ref _CurrentModel, value);
+        }
+
         public ICommand ScheduleSelectCommand { get; }
         public ICommand ChildSelectCommand { get; }
         public ICommand UserSelectCommand { get; }
 
         private void OnScheduleSelectCommand(object p) 
         {
-            MessageBox.Show("Расписание");
+            CurrentModel = new AdminSchedulesViewModel(_Schedule);
         }
 
         private void OnChildSelectCommand(object p) 
         {
-            MessageBox.Show("Дети");
+            CurrentModel = new AdminChildsViewModel(_Child);
         }
 
         private void OnUserSelectCommand(object p) 
         {
-            MessageBox.Show("Пользователи");
+
+            CurrentModel = new AdminUserViewModel(_User);
         }
 
         #endregion
 
 
 
-        public AdminViewModel() 
+        public AdminViewModel(IRepository<Schedule> Schedule, IRepository<User> Users, IRepository<Child> Childs) 
         {
+
+            _Schedule = Schedule;
+            _Child = Childs;
+            _User = Users;
+
             ScheduleSelectCommand = new LambdaCommand(OnScheduleSelectCommand);
             ChildSelectCommand = new LambdaCommand(OnChildSelectCommand);
             UserSelectCommand = new LambdaCommand(OnUserSelectCommand);

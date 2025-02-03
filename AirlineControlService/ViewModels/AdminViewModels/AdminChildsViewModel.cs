@@ -55,6 +55,10 @@ namespace AirlineControlService.ViewModels.AdminViewModels
         #endregion
 
         #region Constructor
+        public AdminChildsViewModel(IRepository<Child> childs)
+        {
+            _Childs = childs;
+        }
         #endregion
     }
 }
