@@ -11,7 +11,7 @@ namespace AirlineControlService.Services.AdminServices
 {
     internal class AdminUserService : IAdminService
     {
-        public Task<Child> Add(IEntity item)
+        public Task<IEntity> Add(IEntity item)
         {
             throw new NotImplementedException();
         }
@@ -21,7 +21,7 @@ namespace AirlineControlService.Services.AdminServices
             throw new NotImplementedException();
         }
 
-        public Task<Child> Update(IEntity item)
+        public Task<IEntity> Update(IEntity item)
         {
             throw new NotImplementedException();
         }

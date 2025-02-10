@@ -5,8 +5,41 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AirlineControlService.Views.Custom.Admin"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="500" d:DesignWidth="900">
     <Grid>
-        <TextBlock>Админка_Дети</TextBlock>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Админка - Дети" FontSize="20" FontWeight="Bold" Margin="20"/>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="20">
+            <Button Content="Добавить" Command="{Binding AddCommand}"  Foreground="White" Padding="5" Margin="5"/>
+            <Button Content="Редактировать" Command="{Binding EditCommand}" Foreground="White" Padding="5" Margin="5"/>
+            <Button Content="Удалить" Command="{Binding DeleteCommand}" Foreground="White" Padding="5" Margin="5"/>
+        </StackPanel>
+
+        <DataGrid Grid.Row="2" ItemsSource="{Binding Children}" AutoGenerateColumns="False" Margin="20" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Имя" Binding="{Binding FirstName}"/>
+                <DataGridTextColumn Header="Фамилия" Binding="{Binding LastName}"/>
+                <DataGridTextColumn Header="Дата рождения" Binding="{Binding BirthDay, StringFormat=d}"/>
+                <DataGridTextColumn Header="Создано" Binding="{Binding CreatedAt, StringFormat=g}"/>
+                <DataGridTextColumn Header="Обновлено" Binding="{Binding UpdatedAt, StringFormat=g}"/>
+                <DataGridTextColumn Header="Родитель" Binding="{Binding ParentName}"/>
+                <DataGridTemplateColumn Header="Действия">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Content="Редактировать" Command="{Binding EditCommand}" Margin="5"/>
+                                <Button Content="Удалить" Command="{Binding DeleteCommand}" Margin="5" Background="Red" Foreground="White"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </UserControl>

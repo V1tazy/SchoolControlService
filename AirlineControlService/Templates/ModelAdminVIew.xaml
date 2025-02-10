@@ -31,4 +31,8 @@
     <DataTemplate DataType="{x:Type vm:PersonalAccountViewModel}">
         <viewsupport:PersonalAccountPage DataContext="{Binding}"/>
     </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:ChildVIewModel}">
+        <viewsupport:ChildPage DataContext="{Binding}"/>
+    </DataTemplate>
 </ResourceDictionary>

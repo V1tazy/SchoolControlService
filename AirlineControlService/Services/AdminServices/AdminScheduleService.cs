@@ -2,28 +2,40 @@
 using AirlineControlService.Interfaces;
 using AirlineControlService.Services.Interface.Admin;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace AirlineControlService.Services.AdminServices
 {
-    internal class AdminScheduleService : IAdminService
+    public class AdminScheduleService : IAdminService
     {
-        public Task<Child> Add(IEntity item)
+        private readonly IRepository<Schedule> _scheduleRepository;
+
+        public AdminScheduleService(IRepository<Schedule> scheduleRepository)
         {
-            throw new NotImplementedException();
+            _scheduleRepository = scheduleRepository ?? throw new ArgumentNullException(nameof(scheduleRepository));
         }
 
-        public Task Remove(int id)
+        public async Task<IEntity> Add(IEntity item)
         {
-            throw new NotImplementedException();
+            if (item is not Schedule schedule)
+                throw new ArgumentException("Invalid entity type", nameof(item));
+
+            return await _scheduleRepository.AddAsync(schedule, CancellationToken.None);
         }
 
-        public Task<Child> Update(IEntity item)
+        public async Task<IEntity> Update(IEntity item)
         {
-            throw new NotImplementedException();
+            if (item is not Schedule schedule)
+                throw new ArgumentException("Invalid entity type", nameof(item));
+
+            await _scheduleRepository.UpdateAsync(schedule, CancellationToken.None);
+            return schedule;
+        }
+
+        public async Task Remove(int id)
+        {
+            await _scheduleRepository.RemoveAsync(id, CancellationToken.None);
         }
     }
 }

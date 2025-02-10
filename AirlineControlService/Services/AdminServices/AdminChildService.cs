@@ -19,7 +19,7 @@ namespace AirlineControlService.Services.AdminServices
             _Childs = childs;
         }
 
-        public Task<Child> Add(IEntity item)
+        public Task<IEntity> Add(IEntity item)
         {
             if (item == _Childs.items.FirstOrDefault())
             {
@@ -37,7 +37,7 @@ namespace AirlineControlService.Services.AdminServices
             return null;
         }
 
-        public Task<Child> Update(IEntity item)
+        public Task<IEntity> Update(IEntity item)
         {
             return null;
         }

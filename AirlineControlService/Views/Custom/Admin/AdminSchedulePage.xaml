@@ -5,8 +5,51 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AirlineControlService.Views.Custom.Admin"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="500" d:DesignWidth="900">
     <Grid>
-        <TextBlock>Расписание_админка</TextBlock>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Заголовок -->
+        <TextBlock Text="Админка - Расписание" FontSize="20" FontWeight="Bold" Margin="20"/>
+
+        <!-- Кнопка "Добавить" -->
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="20">
+            <Button Content="Добавить" Command="{Binding AddCommand}" Padding="5" Margin="5"/>
+        </StackPanel>
+
+        <!-- Таблица с расписанием -->
+        <DataGrid Grid.Row="2" ItemsSource="{Binding Schedules}" 
+                  SelectedItem="{Binding Schedule, Mode=TwoWay}"
+                  AutoGenerateColumns="False" Margin="20">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Преподаватель" Binding="{Binding Teacher.Name}"/>
+                <DataGridTextColumn Header="Дата" Binding="{Binding Date, StringFormat=d}"/>
+                <DataGridTextColumn Header="Начало" Binding="{Binding StartTime, StringFormat=t}"/>
+                <DataGridTextColumn Header="Конец" Binding="{Binding EndTime, StringFormat=t}"/>
+                <DataGridTextColumn Header="Описание" Binding="{Binding Description}"/>
+
+                <!-- Колонка с кнопками "Редактировать" и "Удалить" -->
+                <DataGridTemplateColumn Header="Действия">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Content="Редактировать" 
+                                        Command="{Binding DataContext.EditCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
+                                        CommandParameter="{Binding}" 
+                                        Margin="5"/>
+                                <Button Content="Удалить" 
+                                        Command="{Binding DataContext.RemoveCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
+                                        CommandParameter="{Binding}" 
+                                        Margin="5"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </UserControl>

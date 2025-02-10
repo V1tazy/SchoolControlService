@@ -57,13 +57,13 @@ namespace AirlineControlService.ViewModels
         private void OnScheduleSelectCommand(object p) 
         {
             Title = "Расписание";
-            CurrentViewModel = null;
+            CurrentViewModel = new ClassesViewModel();
         }
 
         private void OnChildSelectCommand(object p)
         {
             Title = "Дети";
-            CurrentViewModel = new ClassesViewModel();
+            CurrentViewModel = new ChildVIewModel();
         }
 
         private void OnPersonalSelectCommand(object p)
@@ -78,7 +78,7 @@ namespace AirlineControlService.ViewModels
             _Schedules = Schedules;
             _Users = Users;
             _CurrentUser = CurrentUser;
-            _username = _CurrentUser.Name;
+            Username = "Текущий пользователь: " +_CurrentUser.Name;
 
             AchiveSelectCommand = new LambdaCommand(OnAchiveSelectCommand);
             ScheduleSelectCommand = new LambdaCommand(OnScheduleSelectCommand);

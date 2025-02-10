@@ -11,9 +11,9 @@ namespace AirlineControlService.Services.Interface.Admin
     interface IAdminService
     {
 
-        Task<Child> Add(IEntity item);
+        Task<IEntity> Add(IEntity item);
 
-        Task<Child> Update(IEntity item);
+        Task<IEntity> Update(IEntity item);
 
         Task Remove(int id);
     }

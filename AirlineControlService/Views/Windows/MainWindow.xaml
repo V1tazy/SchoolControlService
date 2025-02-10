@@ -14,10 +14,11 @@
             <MenuItem Header="Достижения" Command="{Binding AchiveSelectCommand}"/>
             <MenuItem Header="Расписание" Command="{Binding ScheduleSelectCommand}"/>
             <MenuItem Header="Дети" Command="{Binding ChildSelectCommand}"/>
+            <MenuItem Header="Личный аккаунт" Command="{Binding PersonalSelectCommand}"/>
         </Menu>
 
         <StatusBar>
-            <StatusBarItem>Готово</StatusBarItem>
+            <StatusBarItem Content="{Binding Username}"></StatusBarItem>
         </StatusBar>
 
         <Grid>

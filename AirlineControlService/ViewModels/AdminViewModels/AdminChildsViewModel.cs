@@ -1,5 +1,7 @@
 ﻿using AirlineControlService.DAL.Entityes;
+using AirlineControlService.Infrastructure.Commands;
 using AirlineControlService.Interfaces;
+using AirlineControlService.Services.AdminServices;
 using AirlineControlService.VIewModels.Base;
 using System.Windows.Input;
 
@@ -9,7 +11,17 @@ namespace AirlineControlService.ViewModels.AdminViewModels
     {
         #region Define Repository
         private readonly IRepository<Child> _Childs;
+        private readonly AdminChildService _childService;
         #endregion
+
+        private Child _currentChild;
+
+        public Child CurrentChild
+        {
+            get => _currentChild;
+
+            set => Set(ref _currentChild, value);
+        }
 
         #region Command.Define
 
@@ -28,12 +40,19 @@ namespace AirlineControlService.ViewModels.AdminViewModels
 
         private bool CanEditCommand(object p)
         {
-            return true;
+            if (CurrentChild != null) 
+                return true;
+
+            return false;
         }
 
         private bool CanRemoveCommand(object p)
         {
-            return true;
+
+            if (CurrentChild != null) 
+                return true;
+
+            return false;
         }
         #endregion
         #region Command.Functional
@@ -58,6 +77,11 @@ namespace AirlineControlService.ViewModels.AdminViewModels
         public AdminChildsViewModel(IRepository<Child> childs)
         {
             _Childs = childs;
+
+
+            AddCommand = new LambdaCommand(OnAddUserCommand);
+            EditCommand = new LambdaCommand(OnEditUserCommand);
+            RemoveCommand = new LambdaCommand(OnRemoveUserCommand);
         }
         #endregion
     }
